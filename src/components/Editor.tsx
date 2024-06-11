@@ -27,6 +27,8 @@ import { useDecorate } from "../hooks/useDecorate";
 import { storeContent } from "../store/editorSlice";
 import { CustomEditor } from "../custom-editor/custom-editor";
 import { useAppDispatch, useAppSelector } from "../store/hooks";
+import FontSizeButton from "./toolbar-buttons/FontSizeButton";
+import FontFamilyButton from "./toolbar-buttons/FontFamilyButton";
 
 interface EditorProps {
 	editor: Editor;
@@ -117,6 +119,12 @@ const EditorComponent: React.FC<EditorProps> = ({
 				{/* Search input */}
 				<div className="flex flex-row gap-x-3 border-r pr-2">
 					<SearchInput setSearch={setSearch} />
+				</div>
+				<div className="flex flex-row gap-x-3 border-r pr-2">
+					<FontFamilyButton editor={editor} />
+				</div>
+				<div className="flex flex-row gap-x-3 border-r pr-2">
+					<FontSizeButton editor={editor} />
 				</div>
 			</Toolbar>
 			<HoveringToolbar />

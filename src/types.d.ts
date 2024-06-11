@@ -61,6 +61,8 @@ export type HeadingTwoElement = {
 export type ImageELement = {
 	type: "image";
 	url: string;
+	align: "left" | "right" | "center" | "justify";
+	width: number;
 	children: EmptyText[];
 };
 
@@ -96,13 +98,13 @@ export type AlignElement =
 	| BulledtedListElement
 	| NumberedListElement
 	| HeadingOneElement
+	| ImageELement
 	| HeadingTwoElement
 	| ListItemElement;
 
 export type NonAlignElement =
 	| CheckListItemElement
 	| EditableVoidElement
-	| ImageELement
 	| LinkELement
 	| BadgeElement
 	| ListItemElement
@@ -134,6 +136,8 @@ export type CustomText = {
 	underline?: boolean;
 	code?: boolean;
 	highlight?: boolean;
+	fontFamily?: string;
+	fontSize?: string;
 	[key: string]: unknown;
 };
 

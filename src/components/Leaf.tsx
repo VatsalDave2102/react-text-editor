@@ -20,6 +20,10 @@ const Leaf: React.FC<RenderLeafProps> = ({ attributes, children, leaf }) => {
 	return (
 		// leaves must be inline that's why span tag is used
 		<span
+			style={{
+				fontFamily: leaf.fontFamily,
+				fontSize: leaf.fontSize,
+			}}
 			{...attributes}
 			{...(leaf.highlight && { "data-cy": "search-highlighted" })}
 			className={`${leaf.highlight && "bg-yellow-200"}`}
