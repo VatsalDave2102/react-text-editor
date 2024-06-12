@@ -57,7 +57,7 @@ export const withCustomFeatures = (editor: Editor) => {
 						const url = reader.result;
 						// inserting image using fileReader if data is url
 						if (url) {
-							CustomEditor.image.insertImage(editor, url as string);
+							CustomEditor.image.insertImage(editor, url as string, "Image");
 						}
 					});
 
@@ -71,7 +71,7 @@ export const withCustomFeatures = (editor: Editor) => {
 			embedUrl && CustomEditor.embedVideo.insertEmbedVideo(editor, embedUrl);
 		} else if (isImage) {
 			// if link is an image, insert image to editor
-			CustomEditor.image.insertImage(editor, text);
+			CustomEditor.image.insertImage(editor, text, "URL image");
 		} else if (isLink) {
 			// if text is an link
 			CustomEditor.link.wrapLink(editor, text);

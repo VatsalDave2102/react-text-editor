@@ -21,3 +21,25 @@ export type Range = {
 };
 
 export type Ranges = Range[];
+export type SpecialButtons =
+	| "add-link"
+	| "remove-link"
+	| "embed-video"
+	| "badge"
+	| "image"
+	| "search-input";
+
+export type FontButtons = "font-size" | "font-family";
+
+export type MarkButtons = "bold" | "italic" | "underline" | "code";
+export type BlockButtons =
+	| "heading-one"
+	| "heading-two"
+	| "block-quote"
+	| "bulleted-list"
+	| "numbered-list"
+	| "check-list-item"
+	| "left"
+	| "center"
+	| "right"
+	| "justify";

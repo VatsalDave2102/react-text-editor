@@ -61,6 +61,7 @@ export type HeadingTwoElement = {
 export type ImageELement = {
 	type: "image";
 	url: string;
+	alt: string;
 	align: "left" | "right" | "center" | "justify";
 	width: number;
 	children: EmptyText[];

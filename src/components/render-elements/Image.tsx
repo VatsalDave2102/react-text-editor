@@ -1,12 +1,9 @@
 import {
-	ReactEditor,
 	RenderElementProps,
 	useFocused,
 	useSelected,
 	useSlateStatic,
 } from "slate-react";
-import { Button } from "../common/Button";
-import { Icon } from "../common/Icon";
 import { Transforms } from "slate";
 import { useState } from "react";
 import { ImageELement } from "../../types";
@@ -47,7 +44,6 @@ const Image: React.FC<RenderElementProps> = ({
 	};
 
 	// getting path of the node in the editor
-	const path = ReactEditor.findPath(editor, element);
 
 	// getting currently selected state of an element
 	const selected = useSelected();
@@ -57,15 +53,20 @@ const Image: React.FC<RenderElementProps> = ({
 	return (
 		<div {...attributes}>
 			{children}
-			<div contentEditable={false} className="relative inline-block">
+			<div contentEditable={false} className="relative flex w-full">
 				{element.type === "image" && (
 					<>
 						<img
 							src={element.url}
+							alt={element.alt}
 							style={{ width: width + "px" }}
-							className={`block ${selected && focused ? "shadow-xl" : "none"} ${
-								element.align === "left" ? "ml-0" : "mx-auto"
-							}`}
+							className={`${
+								element.align === "left"
+									? "ml-0"
+									: element.align === "right"
+									? "ml-auto"
+									: "mx-auto"
+							} block ${selected && focused ? "shadow-xl" : "none"}`}
 						/>
 						<div
 							onMouseDown={handleMouseDown}
@@ -73,18 +74,6 @@ const Image: React.FC<RenderElementProps> = ({
 						/>
 					</>
 				)}
-				{/* button to delete the image */}
-				<Button
-					active
-					onClick={() =>
-						Transforms.removeNodes(editor, {
-							at: path,
-						})
-					}
-					className={`absolute top-2 left-2`}
-				>
-					<Icon>delete</Icon>
-				</Button>
 			</div>
 		</div>
 	);

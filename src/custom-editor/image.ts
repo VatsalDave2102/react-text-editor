@@ -29,12 +29,19 @@ export const ImageMethods = {
 	},
 
 	// function to add image in editor
-	insertImage(editor: Editor, url: string) {
+	insertImage(editor: Editor, url: string, altText: string, width?: number) {
 		// creating empty text
 		const text = { text: "" };
 
 		// creating image object
-		const image: ImageELement = { type: "image", url, children: [text] };
+		const image: ImageELement = {
+			type: "image",
+			url,
+			children: [text],
+			alt: altText || "",
+			align: "left",
+			width: width || 300,
+		};
 
 		// inserting image node in editor
 		Transforms.insertNodes(editor, image);
